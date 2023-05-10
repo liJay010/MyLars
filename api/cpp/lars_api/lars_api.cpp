@@ -92,6 +92,7 @@ int lars_client::get_route(int modid, int cmdid, route_set &route)
 
     //简单的hash来发给对应的agent udp server
     int index = (modid + cmdid) %3;
+    
     int ret = sendto(_sockfd[index], write_buf, head.msglen + MESSAGE_HEAD_LEN, 0, NULL, 0);
     if (ret == -1) {
         perror("sendto");
